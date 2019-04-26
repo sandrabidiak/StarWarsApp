@@ -1,0 +1,10 @@
+<div>
+    <button (click) = "back()"> Back </button>
+    <br>
+    <label>Title: </label>
+    <p><input [(ngModel)] = "title"></p>
+    <label>Description: </label>
+    <p><input [(ngModel)] = "description"></p>
+    <button (click) = "savePlot()"> Save </button>
+    <button *ngIf = "plotId" (click) = "deletePlot()"> Delete </button>
+</div>

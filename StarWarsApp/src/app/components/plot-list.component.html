@@ -1,0 +1,10 @@
+<div>
+    List of Plots
+    <button (click) = "createPlot()"> Create Plot </button>
+    <div *ngFor = "let plot of plots">
+        <a [routerLink] = "['/plots', plot.id]">
+            {{plot.title}}
+            {{plot.description}}
+        </a>
+    </div>
+</div>
