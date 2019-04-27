@@ -6,16 +6,26 @@
     <label>Description: </label>
     <p><input [(ngModel)] = "description"></p>
     <br>
+
+    <div *ngFor = "let char of selectedCharacters">
+        <div (click) = "removeCharacter(char)">{{char.name}}</div>
+    </div>
+    <div *ngFor = "let planet of selectedPlanets">
+        <div (click) = "removePlanet(planet)">{{planet.name}}</div>
+    </div>
+
     <input [(ngModel)] = "character">
     <button (click) = "getCharacters()"> Choose Character </button>
     <div *ngFor = "let char of characterResults">
-        {{char.name}}
+        <div (click) = "selectCharacter(char)">{{char.name}}</div>
     </div>
+    
     <input [(ngModel)] = "planet">
     <button (click) = "getPlanets()"> Choose Planet </button>
     <div *ngFor = "let planet of planetResults">
-        {{planet.name}}
+        <div (click) = "selectPlanet(planet)">{{planet.name}}</div>
     </div>
+
     <br>
     <button (click) = "savePlot()"> Save </button>
     <button *ngIf = "plotId" (click) = "deletePlot()"> Delete </button>

@@ -5,6 +5,12 @@
         <a [routerLink] = "['/plots', plot.id]">
             {{plot.title}}
             {{plot.description}}
+            <div *ngFor = "let char of plot.characters">
+                {{char.name}}
+            </div>
+            <div *ngFor = "let planet of plot.planets">
+                {{planet.name}}
+            </div>
         </a>
     </div>
 </div>
