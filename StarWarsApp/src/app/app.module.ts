@@ -9,6 +9,8 @@ import { PlotStore } from './stores/plot.store';
 import { PlotDetailComponent } from './components/plot-detail.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes/routes';
+import { StarWarsService } from './services/star-wars.service';
+import { HttpClientModule } from  '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,10 +22,12 @@ import { appRoutes } from './routes/routes';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule,
   ],
   providers: [
-    PlotStore
+    PlotStore,
+    StarWarsService
   ],
   bootstrap: [AppComponent]
 })

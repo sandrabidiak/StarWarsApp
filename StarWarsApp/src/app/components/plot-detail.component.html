@@ -5,6 +5,18 @@
     <p><input [(ngModel)] = "title"></p>
     <label>Description: </label>
     <p><input [(ngModel)] = "description"></p>
+    <br>
+    <input [(ngModel)] = "character">
+    <button (click) = "getCharacters()"> Choose Character </button>
+    <div *ngFor = "let char of characterResults">
+        {{char.name}}
+    </div>
+    <input [(ngModel)] = "planet">
+    <button (click) = "getPlanets()"> Choose Planet </button>
+    <div *ngFor = "let planet of planetResults">
+        {{planet.name}}
+    </div>
+    <br>
     <button (click) = "savePlot()"> Save </button>
     <button *ngIf = "plotId" (click) = "deletePlot()"> Delete </button>
 </div>

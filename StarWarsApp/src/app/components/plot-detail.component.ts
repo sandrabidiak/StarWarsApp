@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Plot } from '../models/plot';
 import { Title } from '@angular/platform-browser';
 import { first } from 'rxjs/operators';
+import { Planet } from '../models/planet';
+import { Character } from '../models/character';
 
 @Component({
     selector: 'plot-detail',
@@ -14,8 +16,11 @@ export class PlotDetailComponent implements OnInit {
     public plotId: number;
     public title: string;
     public description: string;  
-  
-
+    public character: string = '';
+    public planet: string = '';
+    public characterResults: Character[] = [];
+    public planetResults: Planet[] = [];
+    
     constructor(public router: Router, public plotStore: PlotStore, public activatedRoute: ActivatedRoute) {}
 
     public ngOnInit() {
@@ -57,5 +62,21 @@ export class PlotDetailComponent implements OnInit {
     public deletePlot(){
         this.plotStore.deletePlot(this.plotId);
         this.router.navigate(['plots']);
+    }
+
+    public getCharacters() {
+        this.plotStore.getCharacters(this.character).subscribe(
+            characters => {
+                this.characterResults = characters
+            }
+        );
+    }
+
+    public getPlanets() {
+        this.plotStore.getPlanets(this.planet).subscribe(
+            planets => {
+                this.planetResults = planets
+            }
+        );
     }
 }
