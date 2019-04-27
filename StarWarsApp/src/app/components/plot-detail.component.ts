@@ -40,6 +40,16 @@ export class PlotDetailComponent implements OnInit {
             const plot = new Plot(this.title, this.description);
             this.plotStore.addPlot(plot);
             this.router.navigate(['plots']);
+        } else {
+            this.plotStore.plots.pipe(first()).subscribe(
+                (res) => {
+                    let plot = res.find(plot => plot.id === this.plotId) 
+                    plot.title = this.title;
+                    plot.description = this.description;
+                    this.plotStore.updatePlot(plot);
+                    this.router.navigate(['plots']);
+                }
+            );
         }
         
     }

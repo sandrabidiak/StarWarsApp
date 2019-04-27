@@ -13,9 +13,21 @@ export class PlotStore {
         this.plotsSubject.next(currentPlots);
     }
 
+    public updatePlot(updatedPlot: Plot) {
+        let currentPlots = this.plotsSubject.value; 
+        currentPlots = currentPlots.map(plot => {
+            if(plot.id === updatedPlot.id){
+                return updatedPlot;
+            } else {
+                return plot;
+            }
+        })
+        this.plotsSubject.next(currentPlots);
+    }
+
     public deletePlot(plotId: number) {
-        let updatedPlots = this.plotsSubject.value;
-        updatedPlots = updatedPlots.filter(plot => plot.id !== plotId)
-        this.plotsSubject.next(updatedPlots);
+        let currentPlots = this.plotsSubject.value;
+        currentPlots = currentPlots.filter(plot => plot.id !== plotId)
+        this.plotsSubject.next(currentPlots);
     }
 }
