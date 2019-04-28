@@ -9,7 +9,8 @@ import { Character } from '../models/character';
 
 @Component({
     selector: 'plot-detail',
-    templateUrl: './plot-detail.component.html' 
+    templateUrl: './plot-detail.component.html',
+    styleUrls: ['./plot-detail.component.css'] 
 })
 export class PlotDetailComponent implements OnInit {
 
@@ -115,5 +116,9 @@ export class PlotDetailComponent implements OnInit {
         this.selectedPlanets = this.selectedPlanets.filter(
             planet => planet.url !== p.url
         );
+    }
+
+    public isSaveDisabled(): boolean {
+        return !(this.title && this.description);
     }
 }

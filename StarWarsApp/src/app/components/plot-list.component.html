@@ -1,16 +1,29 @@
-<div>
-    List of Plots
-    <button (click) = "createPlot()"> Create Plot </button>
-    <div *ngFor = "let plot of plots">
-        <a [routerLink] = "['/plots', plot.id]">
-            {{plot.title}}
-            {{plot.description}}
-            <div *ngFor = "let char of plot.characters">
-                {{char.name}}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <button class = "btn btn-create" (click) = "createPlot()"> 
+            Create Plot 
+        </button>
+    </div>
+    <div class="row my-4">
+        <div *ngFor = "let plot of plots" class="col-sm-6 col-md-4 mb-4 d-flex align-items-stretch">
+            <div class="card-deck">
+                <div [routerLink] = "['/plots', plot.id]" class="card text-center card-style" >
+                    <h5 class="card-title"> 
+                        {{plot.title}}
+                    </h5>
+                    <p class="card-text"> 
+                        {{plot.description}}
+                    </p>
+                    <div class="card-text text-muted">
+                        <div *ngFor = "let char of plot.characters">
+                            {{char.name}}
+                        </div>
+                        <div *ngFor = "let planet of plot.planets">
+                            {{planet.name}}
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div *ngFor = "let planet of plot.planets">
-                {{planet.name}}
-            </div>
-        </a>
+        </div>
     </div>
 </div>

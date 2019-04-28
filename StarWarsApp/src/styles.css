@@ -1,1 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+    min-height: 100%;
+} 
+
+body {
+    height: 100%;
+    background-image: url(./assets/photo_2019-04-27_19-22-56.jpg);
+    background-repeat:no-repeat;
+    background-size: cover;
+    padding: 4%;
+}
+
+textarea{
+    width: 65%;
+    color: #000000;
+    border: 2px solid #7a7a7a;
+    background-color: #fcf2d1;
+    margin: 10px;
+    padding: 5px;
+    resize: none;
+}
+
+textarea:focus{
+    border: 2px solid #000000;
+    box-shadow: none;
+    outline: none;
+}
+
+input{
+    height: 40px;
+    margin: 10px;
+    padding: 5px;
+    border: 2px solid #7a7a7a;
+    background-color: #fcf2d1;
+}
+
+input:focus {
+    border: 2px solid #000000;
+    box-shadow: none;
+    outline: none;
+}
+
+.btn {
+    background-color: #fae0d7;
+    color: #000000;
+    border-color: #000000;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background-color: #fcf2d1;
+}
+
+.btn:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+

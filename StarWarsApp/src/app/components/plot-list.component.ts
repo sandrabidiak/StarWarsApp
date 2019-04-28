@@ -6,7 +6,8 @@ import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'plot-list',
-    templateUrl: './plot-list.component.html' 
+    templateUrl: './plot-list.component.html',
+    styleUrls: ['./plot-list.component.css'] 
 })
 export class PlotListComponent implements OnInit, OnDestroy {
 

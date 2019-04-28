@@ -1,32 +1,57 @@
-<div>
-    <button (click) = "back()"> Back </button>
-    <br>
-    <label>Title: </label>
-    <p><input [(ngModel)] = "title"></p>
-    <label>Description: </label>
-    <p><input [(ngModel)] = "description"></p>
-    <br>
-
-    <div *ngFor = "let char of selectedCharacters">
-        <div (click) = "removeCharacter(char)">{{char.name}}</div>
+<div class="container-fluid detail-container">
+    <button class="btn" (click) = "back()"> 
+        <i class="fa fa-arrow-left"></i>
+    </button>
+    <div class="row justify-content-center">
+        <textarea class = "title-area" placeholder="Give a title, you must..." [(ngModel)] = "title">
+        </textarea>
+        <textarea class = "description-area" placeholder="Give a description, you must..." [(ngModel)] = "description">
+        </textarea>
+        <div *ngIf="selectedCharacters.length || selectedPlanets.length" class="chosen-area">
+            <div *ngFor = "let char of selectedCharacters">
+                <div class="character">
+                    {{char.name}}
+                    <i (click) = "removeCharacter(char)" class="fa fa-times remove"></i>
+                </div>
+            </div>
+            <div *ngFor = "let planet of selectedPlanets">
+                <div class="planet">
+                    {{planet.name}}
+                    <i (click) = "removePlanet(planet)" class="remove fa fa-times remove"></i>
+                </div>
+            </div>
+        </div> 
     </div>
-    <div *ngFor = "let planet of selectedPlanets">
-        <div (click) = "removePlanet(planet)">{{planet.name}}</div>
+    <div class="row justify-content-around align-items-start">
+        <div class="col-sm-4">
+            <input placeholder="Character" type="text" [(ngModel)] = "character">
+            <button class="btn" (click) = "getCharacters()"> 
+                Select
+            </button>
+            <div *ngFor = "let char of characterResults">
+                <div class= "list-item" (click) = "selectCharacter(char)">
+                    {{char.name}}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <input placeholder="Planet" type="text" [(ngModel)] = "planet">
+            <button class="btn" (click) = "getPlanets()"> 
+                Select 
+            </button>
+            <div *ngFor = "let planet of planetResults">
+                <div class= "list-item" (click) = "selectPlanet(planet)">
+                    {{planet.name}}
+                </div>
+            </div>
+        </div>
     </div>
-
-    <input [(ngModel)] = "character">
-    <button (click) = "getCharacters()"> Choose Character </button>
-    <div *ngFor = "let char of characterResults">
-        <div (click) = "selectCharacter(char)">{{char.name}}</div>
+    <div class="row submit justify-content-end">
+        <button [disabled]="isSaveDisabled()" class="btn btn-save my-2 mr-4" (click) = "savePlot()"> 
+            Save 
+        </button>
+        <button *ngIf = "plotId" class="btn my-2 mr-4" (click) = "deletePlot()"> 
+            Delete 
+        </button>
     </div>
-    
-    <input [(ngModel)] = "planet">
-    <button (click) = "getPlanets()"> Choose Planet </button>
-    <div *ngFor = "let planet of planetResults">
-        <div (click) = "selectPlanet(planet)">{{planet.name}}</div>
-    </div>
-
-    <br>
-    <button (click) = "savePlot()"> Save </button>
-    <button *ngIf = "plotId" (click) = "deletePlot()"> Delete </button>
 </div>
